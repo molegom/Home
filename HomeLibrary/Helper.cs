@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Home
+namespace HomeLibrary
 {
     public static class Helper
     {

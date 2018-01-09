@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Home.Models;
 
-namespace Home
+namespace HomeLibrary
 {
-    class HomeManager
+    public class HomeManager
     {
         private int currentMonth = Helper.Month;
         private int currentYear = Helper.Year;
@@ -24,7 +24,7 @@ namespace Home
                 outputStatusStr = string.Empty;
                 if (currentMonth == 1 && currentYear == 2032)
                 {
-                    int y = 4;
+                    //int y = 4;
                 }
                 int sumFlatMonth = 0;
                 var doneFlats = flats.Where(f => f.Status == HomeStatus.Profiting).ToList();
