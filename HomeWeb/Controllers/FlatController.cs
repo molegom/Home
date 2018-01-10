@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using HomeWeb.Interfaces;
+using HomeWeb.Models;
 
 namespace HomeWeb.Controllers
 {
@@ -6,7 +8,9 @@ namespace HomeWeb.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            IFlatModelFactory flatModelFactory = new FlatModelFactory();
+            FlatListViewModel flatListModel = flatModelFactory.CreateFlatsViewModel();
+            return View(flatListModel);
         }      
     }
 }

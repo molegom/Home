@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using Home.Models;
+using HomeDB;
 
 namespace HomeLibrary
 {
     public class HomeManager
     {
+        public static List<Key> Keys { get; set; } 
+        static HomeManager()
+        {
+            DbManager db = new DbManager();
+            Keys = db.GetAllKeys();
+        }
         private int currentMonth = Helper.Month;
         private int currentYear = Helper.Year;
         private int sum = Helper.Sum;

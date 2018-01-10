@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbManager.cs" />
     <Compile Include="Flat.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -66,6 +67,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Flat.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Flats.cs">
+      <DependentUpon>Flat.tt</DependentUpon>
     </Compile>
     <Compile Include="Key.cs">
       <DependentUpon>Flat.tt</DependentUpon>

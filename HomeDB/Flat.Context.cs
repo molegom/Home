@@ -26,5 +26,6 @@ namespace HomeDB
         }
     
         public virtual DbSet<Key> Keys { get; set; }
+        public virtual DbSet<Flats> Flats { get; set; }
     }
 }

@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="9094fd400a8f4a26b88dd8066a6c1b3d" Name="Diagram1">
         <EntityTypeShape EntityType="FlatModel.Key" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlatModel.Flats" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

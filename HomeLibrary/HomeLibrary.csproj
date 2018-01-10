@@ -40,10 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\KeysEnum.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="HomeManager.cs" />
+    <Compile Include="Interfaces\FlatUi.cs" />
+    <Compile Include="Interfaces\IFlatUi.cs" />
     <Compile Include="Models\FlatModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HomeDB\HomeDB.csproj">
+      <Project>{71165e0f-dc90-4c96-a398-08750f78f920}</Project>
+      <Name>HomeDB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
