@@ -10,5 +10,11 @@ namespace HomeLibrary.Interfaces
             DbManager db = new DbManager();
             return db.GetAllFlats();
         }
+
+        public List<Image> GetAllImages()
+        {
+            DbManager db = new DbManager();
+            return db.GetAllImages();
+        }
     }
 }

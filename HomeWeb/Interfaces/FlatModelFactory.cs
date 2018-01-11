@@ -14,7 +14,8 @@ namespace HomeWeb.Interfaces
         {
             return new FlatListViewModel
             {
-                Flats = flatUi.GetAllFlats()
+                Flats = flatUi.GetAllFlats(),
+                Images =  flatUi.GetAllImages()
             };
         }
     }

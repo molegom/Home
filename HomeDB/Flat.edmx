@@ -19,6 +19,23 @@
           <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FlatId" Type="int" Nullable="false" />
+          <Property Name="ImageData" Type="varbinary(max)" />
+          <Property Name="ImageStatusId" Type="int" Nullable="false" />
+          <Property Name="CreatedData" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ImageStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Keys">
           <Key>
             <PropertyRef Name="Id" />
@@ -29,9 +46,43 @@
           <Property Name="Description" Type="nvarchar" MaxLength="250" />
           <Property Name="UpdatedTime" Type="datetime" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Images_Flats">
+          <End Role="FlatList" Type="Self.FlatList" Multiplicity="1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlatList">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="FlatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_ImagesStatus">
+          <End Role="ImageStatus" Type="Self.ImageStatus" Multiplicity="1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImageStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="ImageStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="FlatModelStoreContainer">
           <EntitySet Name="FlatList" EntityType="Self.FlatList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImageStatus" EntityType="Self.ImageStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Keys" EntityType="Self.Keys" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Images_Flats" Association="Self.FK_Images_Flats">
+            <End Role="FlatList" EntitySet="FlatList" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_ImagesStatus" Association="Self.FK_Images_ImagesStatus">
+            <End Role="ImageStatus" EntitySet="ImageStatus" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -49,8 +100,18 @@
         </EntityType>
         <EntityContainer Name="FlatEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Keys" EntityType="Self.Key" />
-          <EntitySet Name="FlatList" EntityType="FlatModel.Flats" />
-        </EntityContainer>
+          <EntitySet Name="Flats" EntityType="FlatModel.Flats" />
+          <EntitySet Name="ImageStatus1" EntityType="FlatModel.ImageStatus" />
+          <EntitySet Name="Images" EntityType="FlatModel.Image" />
+          <AssociationSet Name="FK_Images_Flats" Association="FlatModel.FK_Images_Flats">
+            <End Role="Flats" EntitySet="Flats" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_ImagesStatus" Association="FlatModel.FK_Images_ImagesStatus">
+            <End Role="ImageStatus" EntitySet="ImageStatus1" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Flats">
           <Key>
             <PropertyRef Name="Id" />
@@ -64,8 +125,53 @@
           <Property Name="PhotoId" Type="Int32" />
           <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Images" Relationship="FlatModel.FK_Images_Flats" FromRole="Flats" ToRole="Image" />
         </EntityType>
-      </Schema>
+        <EntityType Name="ImageStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Images" Relationship="FlatModel.FK_Images_ImagesStatus" FromRole="ImageStatus" ToRole="Image" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlatId" Type="Int32" Nullable="false" />
+          <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageStatusId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedData" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="FlatList" Relationship="FlatModel.FK_Images_Flats" FromRole="Image" ToRole="Flats" />
+          <NavigationProperty Name="ImageStatus" Relationship="FlatModel.FK_Images_ImagesStatus" FromRole="Image" ToRole="ImageStatus" />
+        </EntityType>
+        <Association Name="FK_Images_Flats">
+          <End Type="FlatModel.Flats" Role="Flats" Multiplicity="1" />
+          <End Type="FlatModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flats">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="FlatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_ImagesStatus">
+          <End Type="FlatModel.ImageStatus" Role="ImageStatus" Multiplicity="1" />
+          <End Type="FlatModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImageStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="ImageStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -82,7 +188,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FlatList">
+          <EntitySetMapping Name="Flats">
             <EntityTypeMapping TypeName="FlatModel.Flats">
               <MappingFragment StoreEntitySet="FlatList">
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -93,6 +199,25 @@
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="ComplexName" ColumnName="ComplexName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageStatus1">
+            <EntityTypeMapping TypeName="FlatModel.ImageStatus">
+              <MappingFragment StoreEntitySet="ImageStatus">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="FlatModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="CreatedData" ColumnName="CreatedData" />
+                <ScalarProperty Name="ImageStatusId" ColumnName="ImageStatusId" />
+                <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+                <ScalarProperty Name="FlatId" ColumnName="FlatId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

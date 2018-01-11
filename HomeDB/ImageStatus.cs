@@ -12,23 +12,16 @@ namespace HomeDB
     using System;
     using System.Collections.Generic;
     
-    public partial class Flats
+    public partial class ImageStatus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Flats()
+        public ImageStatus()
         {
             this.Images = new HashSet<Image>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string ComplexName { get; set; }
-        public string Address { get; set; }
-        public Nullable<int> NumberFlat { get; set; }
-        public Nullable<System.DateTime> BuyDate { get; set; }
-        public Nullable<int> PhotoId { get; set; }
-        public string Status { get; set; }
-        public System.DateTime CreatedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }

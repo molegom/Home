@@ -27,5 +27,7 @@ namespace HomeDB
     
         public virtual DbSet<Key> Keys { get; set; }
         public virtual DbSet<Flats> Flats { get; set; }
+        public virtual DbSet<ImageStatus> ImageStatus1 { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
     }
 }

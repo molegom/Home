@@ -24,6 +24,11 @@ namespace HomeDB
             return flatEntities.Flats.ToList();
         }
 
+        public List<Image> GetAllImages()
+        {
+            return flatEntities.Images.ToList();
+        }
+
         public Flats GetFlatById(int id)
         {
             return flatEntities.Flats.FirstOrDefault(k => k.Id == id);
