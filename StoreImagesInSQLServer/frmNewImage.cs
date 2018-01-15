@@ -1,12 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.IO;
+using HomeDB;
+using StoreImagesInSQLServer.Interfaces;
+
 namespace StoreImagesInSQLServer
 {
     public partial class frmNewImage : Form
@@ -22,29 +19,18 @@ namespace StoreImagesInSQLServer
             {
                 //Read Image Bytes into a byte array
                 byte[] imageData = ReadFile(txtImagePath.Text);
-                
-                //Initialize SQL Server Connection
-                SqlConnection CN = new SqlConnection(txtConnectionString.Text);
 
-                //Set insert query
-                string qry = "insert into ImagesStore (OriginalPath,ImageData) values(@OriginalPath, @ImageData)";
-
-                //Initialize SqlCommand object for insert.
-                SqlCommand SqlCom = new SqlCommand(qry, CN);
-
-                //We are passing Original Image Path and Image byte data as sql parameters.
-                SqlCom.Parameters.Add(new SqlParameter("@OriginalPath", (object)txtImagePath.Text));
-                SqlCom.Parameters.Add(new SqlParameter("@ImageData", (object)imageData));
-
-                //Open connection and execute insert query.
-                CN.Open();
-                SqlCom.ExecuteNonQuery();
-                CN.Close();
-
-                //Close form and return to list or images.
-                this.Close();
+                Image image = new Image()
+                {
+                    CreatedData = DateTime.Now,
+                    FlatId = 1,
+                    ImageData = imageData,
+                    ImageStatusId = 1
+                };
+                IImageUi imgUi = new ImageUi();
+                var images = imgUi.SaveImage(image);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace HomeDB
@@ -37,6 +38,21 @@ namespace HomeDB
         public Flats GetFlatByName(string name)
         {
             return flatEntities.Flats.FirstOrDefault(k => k.Name == name);
+        }
+
+        public int SaveImage(Image image)
+        {
+            int result;
+            try
+            {
+                flatEntities.Images.Add(image);
+                result = flatEntities.SaveChanges();
+            }
+            catch
+            {
+                result = 0;
+            }
+            return result;
         }
     }
 }

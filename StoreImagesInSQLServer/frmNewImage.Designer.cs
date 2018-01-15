@@ -33,9 +33,7 @@ namespace StoreImagesInSQLServer
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmdSave = new System.Windows.Forms.Button();
-            this.cmdCancel = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtConnectionString = new System.Windows.Forms.TextBox();
+            this.cmdCancel = new System.Windows.Forms.Button();            
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,33 +91,13 @@ namespace StoreImagesInSQLServer
             this.cmdCancel.TabIndex = 5;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
-            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Connection String :";
-            // 
-            // txtConnectionString
-            // 
-            this.txtConnectionString.Location = new System.Drawing.Point(105, 7);
-            this.txtConnectionString.Name = "txtConnectionString";
-            this.txtConnectionString.ReadOnly = true;
-            this.txtConnectionString.Size = new System.Drawing.Size(415, 20);
-            this.txtConnectionString.TabIndex = 6;
-            this.txtConnectionString.Text = "Data Source=D820001\\MSDE;Initial Catalog=ImagesDB;Integrated Security=SSPI;";
+            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);            
             // 
             // frmNewImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 441);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtConnectionString);
+            this.ClientSize = new System.Drawing.Size(601, 441);            
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdSave);
             this.Controls.Add(this.pictureBox1);
@@ -128,7 +106,7 @@ namespace StoreImagesInSQLServer
             this.Controls.Add(this.cmdBrowse);
             this.MaximizeBox = false;
             this.Name = "frmNewImage";
-            this.Text = "New Image";
+            this.Text = "New Image";            
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -142,8 +120,6 @@ namespace StoreImagesInSQLServer
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button cmdSave;
-        private System.Windows.Forms.Button cmdCancel;
-        private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.TextBox txtConnectionString;
+        private System.Windows.Forms.Button cmdCancel;        
     }
 }

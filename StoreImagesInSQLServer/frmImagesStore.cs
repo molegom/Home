@@ -1,13 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Data.Entity;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.IO;
-using System.Configuration;
 using StoreImagesInSQLServer.Interfaces;
 
 namespace StoreImagesInSQLServer
@@ -26,19 +21,7 @@ namespace StoreImagesInSQLServer
             {
                 IImageUi imgUi = new ImageUi();
                 var images = imgUi.GetAllImages();
-                //Initialize SQL Server connection.
-                //SqlConnection CN = new SqlConnection(txtConnectionString.Text);
-
-                ////Initialize SQL adapter.
-                //SqlDataAdapter ADAP = new SqlDataAdapter("Select * from ImagesStore", CN);
-
-                ////Initialize Dataset.
-                //DataSet DS = new DataSet();
-
-                ////Fill dataset with ImagesStore table.
-                //ADAP.Fill(DS, "ImagesStore");
-
-                //Fill Grid with dataset.
+              
                 dataGridView1.DataSource = images;
             }
             catch(Exception ex)
@@ -89,14 +72,7 @@ namespace StoreImagesInSQLServer
 
         private void frmImagesStore_Load(object sender, EventArgs e)
         {
-            string cs = ConfigurationManager.ConnectionStrings["FlatEntities"].ConnectionString;
-            //Fill datagrid with table rows.
             GetImagesFromDatabase();
-        }
-
-        private void cmdConnect_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

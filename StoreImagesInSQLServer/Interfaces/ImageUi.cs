@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using HomeDB;
 
 namespace StoreImagesInSQLServer.Interfaces
@@ -10,6 +9,12 @@ namespace StoreImagesInSQLServer.Interfaces
         {
             DbManager db = new DbManager();
             return db.GetAllImages();
+        }
+
+        public int SaveImage(Image image)
+        {
+            DbManager db = new DbManager();
+            return db.SaveImage(image);
         }
     }
 }
