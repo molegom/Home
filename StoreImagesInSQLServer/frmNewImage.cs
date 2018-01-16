@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using System.IO;
+using System.Linq;
 using HomeDB;
 using StoreImagesInSQLServer.Interfaces;
 
@@ -8,8 +9,10 @@ namespace StoreImagesInSQLServer
 {
     public partial class frmNewImage : Form
     {
+        private IImageUi imgUi;
         public frmNewImage()
         {
+            imgUi = new ImageUi();
             InitializeComponent();
         }
 
@@ -77,6 +80,11 @@ namespace StoreImagesInSQLServer
         {
             //Close this form if user clicks cancel.
             this.Close();
+        }
+
+        private void frmNewImage_Load(object sender, EventArgs e)
+        {
+            cmbImageStatus.DataSource = imgUi.GetAllImageStatuses().Values.ToList();
         }
     }
 }

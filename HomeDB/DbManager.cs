@@ -54,5 +54,10 @@ namespace HomeDB
             }
             return result;
         }
+
+        public Dictionary<int, string> GetAllImageStatuses()
+        {
+            return flatEntities.ImageStatus.ToDictionary(key => key.Id, val => val.Name);
+        }
     }
 }

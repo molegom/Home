@@ -5,15 +5,28 @@ namespace StoreImagesInSQLServer.Interfaces
 {
     public class ImageUi : IImageUi
     {
-        List<Image> IImageUi.GetAllImages()
+        private static DbManager db = null;
+
+        public ImageUi()
         {
-            DbManager db = new DbManager();
+            if (db == null)
+            {
+                db = new DbManager();
+            }
+        }
+
+        List<Image> IImageUi.GetAllImages()
+        {            
             return db.GetAllImages();
         }
 
+        public Dictionary<int, string> GetAllImageStatuses()
+        {            
+            return db.GetAllImageStatuses();
+        }
+
         public int SaveImage(Image image)
-        {
-            DbManager db = new DbManager();
+        {            
             return db.SaveImage(image);
         }
     }

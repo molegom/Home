@@ -33,13 +33,14 @@ namespace StoreImagesInSQLServer
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmdSave = new System.Windows.Forms.Button();
-            this.cmdCancel = new System.Windows.Forms.Button();            
+            this.cmdCancel = new System.Windows.Forms.Button();
+            this.cmbImageStatus = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // cmdBrowse
             // 
-            this.cmdBrowse.Location = new System.Drawing.Point(435, 39);
+            this.cmdBrowse.Location = new System.Drawing.Point(413, 13);
             this.cmdBrowse.Name = "cmdBrowse";
             this.cmdBrowse.Size = new System.Drawing.Size(85, 21);
             this.cmdBrowse.TabIndex = 0;
@@ -49,7 +50,7 @@ namespace StoreImagesInSQLServer
             // 
             // txtImagePath
             // 
-            this.txtImagePath.Location = new System.Drawing.Point(105, 40);
+            this.txtImagePath.Location = new System.Drawing.Point(83, 14);
             this.txtImagePath.Name = "txtImagePath";
             this.txtImagePath.ReadOnly = true;
             this.txtImagePath.Size = new System.Drawing.Size(324, 20);
@@ -58,7 +59,7 @@ namespace StoreImagesInSQLServer
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 42);
+            this.label1.Location = new System.Drawing.Point(8, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 2;
@@ -66,7 +67,7 @@ namespace StoreImagesInSQLServer
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(105, 74);
+            this.pictureBox1.Location = new System.Drawing.Point(83, 48);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(415, 302);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -75,7 +76,7 @@ namespace StoreImagesInSQLServer
             // 
             // cmdSave
             // 
-            this.cmdSave.Location = new System.Drawing.Point(107, 392);
+            this.cmdSave.Location = new System.Drawing.Point(85, 366);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(89, 26);
             this.cmdSave.TabIndex = 4;
@@ -85,19 +86,28 @@ namespace StoreImagesInSQLServer
             // 
             // cmdCancel
             // 
-            this.cmdCancel.Location = new System.Drawing.Point(213, 392);
+            this.cmdCancel.Location = new System.Drawing.Point(191, 366);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(89, 26);
             this.cmdCancel.TabIndex = 5;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
-            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);            
+            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
+            // 
+            // cmbImageStatus
+            // 
+            this.cmbImageStatus.FormattingEnabled = true;
+            this.cmbImageStatus.Location = new System.Drawing.Point(534, 48);
+            this.cmbImageStatus.Name = "cmbImageStatus";
+            this.cmbImageStatus.Size = new System.Drawing.Size(121, 21);
+            this.cmbImageStatus.TabIndex = 6;
             // 
             // frmNewImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 441);            
+            this.ClientSize = new System.Drawing.Size(699, 441);
+            this.Controls.Add(this.cmbImageStatus);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdSave);
             this.Controls.Add(this.pictureBox1);
@@ -106,7 +116,8 @@ namespace StoreImagesInSQLServer
             this.Controls.Add(this.cmdBrowse);
             this.MaximizeBox = false;
             this.Name = "frmNewImage";
-            this.Text = "New Image";            
+            this.Text = "New Image";
+            this.Load += new System.EventHandler(this.frmNewImage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -120,6 +131,7 @@ namespace StoreImagesInSQLServer
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button cmdSave;
-        private System.Windows.Forms.Button cmdCancel;        
+        private System.Windows.Forms.Button cmdCancel;
+        private System.Windows.Forms.ComboBox cmbImageStatus;
     }
 }
