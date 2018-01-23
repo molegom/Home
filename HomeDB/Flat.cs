@@ -7,3 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+namespace HomeDB
+{
+    using System;
+    using System.Collections.Generic;
+
+    public partial class Flat
+    {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Flat()
+        {
+            this.Images = new HashSet<Image>();
+        }
+
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string ComplexName { get; set; }
+        public string Address { get; set; }
+        public int? NumberFlat { get; set; }
+        public DateTime? BuyDate { get; set; }
+        public int? PhotoId { get; set; }
+        public string Status { get; set; }
+        public DateTime CreatedDate { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Image> Images { get; set; }
+    }
+}

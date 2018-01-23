@@ -9,9 +9,6 @@
 
 namespace HomeDB
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class Image
     {
         public int Id { get; set; }
@@ -19,8 +16,7 @@ namespace HomeDB
         public byte[] ImageData { get; set; }
         public int ImageStatusId { get; set; }
         public System.DateTime CreatedData { get; set; }
-    
-        public virtual Flats FlatList { get; set; }
         public virtual ImageStatus ImageStatus { get; set; }
+        public virtual Flat Flat { get; set; }
     }
 }

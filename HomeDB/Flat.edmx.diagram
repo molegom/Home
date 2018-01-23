@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9094fd400a8f4a26b88dd8066a6c1b3d" Name="Diagram1">
-        <EntityTypeShape EntityType="FlatModel.Key" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlatModel.Flats" Width="1.5" PointX="8" PointY="0.75" />
-        <EntityTypeShape EntityType="FlatModel.ImageStatus" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="FlatModel.Image" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FlatModel.Image" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="FlatModel.ImageStatus" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="FlatModel.Key" Width="1.5" PointX="2.75" PointY="4.75" />
+        <AssociationConnector Association="FlatModel.FK_Images_ImageStatuses" />
+        <EntityTypeShape EntityType="FlatModel.Flat" Width="1.5" PointX="5.375" PointY="1" />
         <AssociationConnector Association="FlatModel.FK_Images_Flats" />
-        <AssociationConnector Association="FlatModel.FK_Images_ImagesStatus" />
-        </Diagram>
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

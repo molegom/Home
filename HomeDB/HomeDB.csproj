@@ -68,9 +68,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Flat.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Flats.cs">
-      <DependentUpon>Flat.tt</DependentUpon>
-    </Compile>
     <Compile Include="Image.cs">
       <DependentUpon>Flat.tt</DependentUpon>
     </Compile>

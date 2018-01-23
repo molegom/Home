@@ -26,7 +26,7 @@ namespace StoreImagesInSQLServer
                 Image image = new Image()
                 {
                     CreatedData = DateTime.Now,
-                    FlatId = 1,
+                    FlatId = 3,
                     ImageData = imageData,
                     ImageStatusId = 1
                 };

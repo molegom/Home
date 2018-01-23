@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace HomeDB
@@ -20,7 +19,7 @@ namespace HomeDB
             return flatEntities.Keys.ToList();
         }
 
-        public List<Flats> GetAllFlats()
+        public List<Flat> GetAllFlats()
         {
             return flatEntities.Flats.ToList();
         }
@@ -30,12 +29,12 @@ namespace HomeDB
             return flatEntities.Images.ToList();
         }
 
-        public Flats GetFlatById(int id)
+        public Flat GetFlatById(int id)
         {
             return flatEntities.Flats.FirstOrDefault(k => k.Id == id);
         }
 
-        public Flats GetFlatByName(string name)
+        public Flat GetFlatByName(string name)
         {
             return flatEntities.Flats.FirstOrDefault(k => k.Name == name);
         }
@@ -57,7 +56,7 @@ namespace HomeDB
 
         public Dictionary<int, string> GetAllImageStatuses()
         {
-            return flatEntities.ImageStatus.ToDictionary(key => key.Id, val => val.Name);
+            return flatEntities.ImageStatuses.ToDictionary(key => key.Id, val => val.Name);
         }
     }
 }

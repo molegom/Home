@@ -6,7 +6,7 @@ namespace HomeLibrary.Interfaces
 {
     public interface IFlatUi
     {
-        List<Flats> GetAllFlats();
+        List<Flat> GetAllFlats();
         List<Image> GetAllImages();
     }
 }

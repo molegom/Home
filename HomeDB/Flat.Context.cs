@@ -25,9 +25,9 @@ namespace HomeDB
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Key> Keys { get; set; }
-        public virtual DbSet<Flats> Flats { get; set; }
-        public virtual DbSet<ImageStatus> ImageStatus { get; set; }
         public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<ImageStatus> ImageStatuses { get; set; }
+        public virtual DbSet<Key> Keys { get; set; }
+        public virtual DbSet<Flat> Flats { get; set; }
     }
 }

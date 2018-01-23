@@ -18,8 +18,7 @@ namespace HomeDB
         public ImageStatus()
         {
             this.Images = new HashSet<Image>();
-        }
-    
+        }    
         public int Id { get; set; }
         public string Name { get; set; }
     

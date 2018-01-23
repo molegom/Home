@@ -5,7 +5,7 @@ namespace HomeLibrary.Interfaces
 {
     public class FlatUi: IFlatUi
     {
-        public List<Flats> GetAllFlats()
+        public List<Flat> GetAllFlats()
         {
             DbManager db = new DbManager();
             return db.GetAllFlats();

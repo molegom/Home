@@ -18,6 +18,6 @@ namespace HomeDB
         public string Name { get; set; }
         public string Value { get; set; }
         public string Description { get; set; }
-        public System.DateTime UpdatedTime { get; set; }
+        public DateTime UpdatedTime { get; set; }
     }
 }
