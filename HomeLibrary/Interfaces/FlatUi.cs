@@ -3,17 +3,29 @@ using HomeDB;
 
 namespace HomeLibrary.Interfaces
 {
-    public class FlatUi: IFlatUi
+    public class FlatUi : IFlatUi
     {
+        private static DbManager db { get; set; }
+
+        public FlatUi()
+        {
+            if (db == null)
+            {
+                db = new DbManager();
+            }
+        }
+        public Flat GetFlat(int id)
+        {
+            return db.GetFlatById(id);
+        }
+
         public List<Flat> GetAllFlats()
         {
-            DbManager db = new DbManager();
             return db.GetAllFlats();
         }
 
         public List<Image> GetAllImages()
         {
-            DbManager db = new DbManager();
             return db.GetAllImages();
         }
     }

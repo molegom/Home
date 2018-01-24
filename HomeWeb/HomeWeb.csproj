@@ -199,7 +199,8 @@
     </Compile>
     <Compile Include="Interfaces\FlatModelFactory.cs" />
     <Compile Include="Interfaces\IFlatModelFactory.cs" />
-    <Compile Include="Models\FlatsViewModel.cs" />
+    <Compile Include="Models\FlatViewModel.cs" />
+    <Compile Include="Models\FlatListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +243,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Flat\Index.cshtml" />
+    <Content Include="Views\Flat\Flat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

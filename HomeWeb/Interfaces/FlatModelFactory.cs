@@ -3,20 +3,30 @@ using HomeWeb.Models;
 
 namespace HomeWeb.Interfaces
 {
-    class FlatModelFactory: IFlatModelFactory
+    class FlatModelFactory : IFlatModelFactory
     {
         private IFlatUi flatUi { get; set; }
         public FlatModelFactory()
         {
             flatUi = new FlatUi();
         }
-        public FlatListViewModel CreateFlatsViewModel()
+        public FlatListViewModel CreateFlatListViewModel()
         {
-            return new FlatListViewModel
+            FlatListViewModel flatListViewModel = new FlatListViewModel
             {
                 Flats = flatUi.GetAllFlats(),
-                Images =  flatUi.GetAllImages()
+                Images = flatUi.GetAllImages()
             };
+            return flatListViewModel;
+        }
+
+        public FlatViewModel CreateFlatViewModel(int id)
+        {
+            FlatViewModel flatViewModel = new FlatViewModel()
+            {
+                Flat = flatUi.GetFlat(id)
+            };
+            return flatViewModel;
         }
     }
 }

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HomeWeb.Models;
+﻿using HomeWeb.Models;
 
 namespace HomeWeb.Interfaces
 {
     interface IFlatModelFactory
     {
-        FlatListViewModel CreateFlatsViewModel();
+        FlatListViewModel CreateFlatListViewModel();
+        FlatViewModel CreateFlatViewModel(int id);
     }
 }

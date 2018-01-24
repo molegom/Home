@@ -9,8 +9,15 @@ namespace HomeWeb.Controllers
         public ActionResult Index()
         {
             IFlatModelFactory flatModelFactory = new FlatModelFactory();
-            FlatListViewModel flatListModel = flatModelFactory.CreateFlatsViewModel();
+            FlatListViewModel flatListModel = flatModelFactory.CreateFlatListViewModel();
             return View(flatListModel);
-        }      
+        }
+
+        public ActionResult FlatDetail(int id)
+        {
+            IFlatModelFactory flatModelFactory = new FlatModelFactory();
+            FlatViewModel flatListModel = flatModelFactory.CreateFlatViewModel(id);
+            return View("Flat", flatListModel);
+        }
     }
 }
