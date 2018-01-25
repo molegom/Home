@@ -28,5 +28,10 @@ namespace HomeLibrary.Interfaces
         {
             return db.GetAllImages();
         }
+
+        public List<Image> GetAllPreviewImages()
+        {
+            return db.GetAllPreviewImages();
+        }
     }
 }

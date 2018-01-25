@@ -9,5 +9,6 @@ namespace HomeLibrary.Interfaces
         Flat GetFlat(int id);
         List<Flat> GetAllFlats();
         List<Image> GetAllImages();
+        List<Image> GetAllPreviewImages();
     }
 }

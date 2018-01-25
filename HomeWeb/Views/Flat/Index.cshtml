@@ -1,4 +1,5 @@
-﻿@model HomeWeb.Models.FlatListViewModel
+﻿@using HomeDB
+@model HomeWeb.Models.FlatListViewModel
 
 @{
     ViewBag.Title = "Flat List";
@@ -12,8 +13,12 @@
             <div class="mainFlatDiv">
                 @if (Model.Flats.Count > i)
                 {
-                    <a href="@Url.Action("FlatDetail", "Flat", new { @id = @Model.Flats[i].Id} )">@Model.Flats[i].Name</a>
-                    @Model.Flats[i].Name
+                    var imgBase64 = Convert.ToBase64String(Model.Images.FirstOrDefault(p => p.FlatId == i+1).ImageData);
+                    <a href="@Url.Action("FlatDetail", "Flat", new {@id = @Model.Flats[i].Id})">
+                        <img src=@string.Format("data:image/jpg;base64,{0}", imgBase64) alt="Alternate Text"/>                        
+                        @*@Model.Flats[i].Name*@
+                    </a>
+                    //@Model.Flats[i].Name
                 }
             </div>
         }

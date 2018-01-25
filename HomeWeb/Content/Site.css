@@ -1,4 +1,5 @@
 ﻿body {
+    font-family: helvetica;
     padding-top: 50px;
     padding-bottom: 20px;
     background-color: palegreen;
@@ -42,6 +43,13 @@ textarea {
     border-radius: 5px;
     float: left;
     margin: 10px;    
+}
+
+.mainFlatDiv img{
+    height: 100px;
+    width: 100px;
+    border: 1px solid #DDDDDD;
+    border-radius: 2px;
 }
 
 hr {

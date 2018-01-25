@@ -15,7 +15,7 @@ namespace HomeWeb.Interfaces
             FlatListViewModel flatListViewModel = new FlatListViewModel
             {
                 Flats = flatUi.GetAllFlats(),
-                Images = flatUi.GetAllImages()
+                Images = flatUi.GetAllPreviewImages()
             };
             return flatListViewModel;
         }
