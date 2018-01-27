@@ -1,9 +1,7 @@
-﻿@using HomeDB
-@model HomeWeb.Models.FlatListViewModel
+﻿@model HomeWeb.Models.FlatListViewModel
 
 @{
     ViewBag.Title = "Flat List";
-    //Layout = "_Layout";
 }
 <h2>@ViewBag.Title</h2>
 <div class="mainDiv">
@@ -13,12 +11,18 @@
             <div class="mainFlatDiv">
                 @if (Model.Flats.Count > i)
                 {
-                    var imgBase64 = Convert.ToBase64String(Model.Images.FirstOrDefault(p => p.FlatId == i+1).ImageData);
-                    <a href="@Url.Action("FlatDetail", "Flat", new {@id = @Model.Flats[i].Id})">
-                        <img src=@string.Format("data:image/jpg;base64,{0}", imgBase64) alt="Alternate Text"/>                        
-                        @*@Model.Flats[i].Name*@
+                    var currentFlat = Model.Flats[i];
+                    var imgBase64 = Convert.ToBase64String(Model.Images.FirstOrDefault(p => p.FlatId == i + 1).ImageData);
+
+                    <a href="@Url.Action("FlatDetail", "Flat", new {@id = @currentFlat.Id})">
+                        <div class="photoDiv">
+                            <img src=@string.Format("data:image/jpg;base64,{0}", imgBase64) alt=@currentFlat.Name />
+                        </div>
+                        <div class="nameDiv">
+                            <span class="nameSpan">@currentFlat.Name</span>
+                            <span class="addressSpan">@currentFlat.Address</span>
+                        </div>
                     </a>
-                    //@Model.Flats[i].Name
                 }
             </div>
         }

@@ -1,6 +1,6 @@
 ﻿body {
     font-family: helvetica;
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
     background-color: palegreen;
 }
@@ -32,25 +32,57 @@ textarea {
     width: 1002px;
     margin-left: auto;
     margin-right: auto;
-    //border: 1px solid red;
-    height: 4002px;   
+    height: 4002px;
 }
 
-.mainFlatDiv {
-    width: 180px; 
-    height: 180px; 
-    border: solid 1px #fff0f0;
-    border-radius: 5px;
-    float: left;
-    margin: 10px;    
-}
-
-.mainFlatDiv img{
-    height: 100px;
+.photoDiv, .nameDiv {
+    margin-top: 10px;
     width: 100px;
+    margin-left: auto;
+    margin-right: auto;   
+}
+.nameDiv {
+    padding-top: 0px;
+    margin-top: 0px;       
+    text-align: center;
+    color: black;
+    font-size: 18px;
     border: 1px solid #DDDDDD;
+    width: 100px;
     border-radius: 2px;
 }
+
+.nameDiv:hover {
+    color: black;
+}
+
+.nameSpan {
+    
+}
+
+.addressSpan {
+    color: gray;
+    font-size: 12px;
+}
+
+.mainFlatDiv a:hover {
+    text-decoration: none;
+}
+.mainFlatDiv {
+    width: 180px;
+    height: 180px;
+    border: solid 1px #fff0f0;
+    border-radius: 2px;
+    float: left;
+    margin: 10px;
+}
+
+    .mainFlatDiv img {
+        height: 100px;
+        width: 100px;
+        border: 1px solid #DDDDDD;
+        border-radius: 2px;
+    }
 
 hr {
     clear: both;
