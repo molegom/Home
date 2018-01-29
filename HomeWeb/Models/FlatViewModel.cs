@@ -7,5 +7,6 @@ namespace HomeWeb.Models
     {
         public Flat Flat { get; set; }
         public List<Image> Images { get; set; }
+        public List<Image> ThumbImages { get; set; }
     }
 }

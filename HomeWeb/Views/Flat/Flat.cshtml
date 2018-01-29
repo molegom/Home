@@ -1,50 +1,68 @@
 ﻿@model HomeWeb.Models.FlatViewModel
 
 @{
-    ViewBag.Title = "Flat ";
-    //Layout = "_Layout";
+    ViewBag.Title = "Flat " + @Model.Flat.Name;
 }
-<link rel="stylesheet" type="text/css" href="../../Slick/slick.css" />
-@*// Add the new slick-theme.css if you want the default styling*@
-<link rel="stylesheet" type="text/css" href="../../Slick/slick-theme.css"/>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="../../Slick/slick.css"></script>
+@Styles.Render("~/Content/jCarousel")
 @Html.ActionLink("Home/FlatList", "Index", "Flat")
 <br />
 <h2>@Model.Flat.Name</h2>
 
 <div class="mainCurrentFlatDiv">
     @Model.Flat.Address
-    <br />
+    <br/>
     @Model.Flat.Id
-    <br />
+    <br/>
     @Model.Flat.BuyDate
-    <br />
+    <br/>
     @Model.Flat.ComplexName
-    <br />
+    <br/>
     @Model.Flat.CreatedDate
-    <br />
+    <br/>
     @{
         string numberFlat = @Model.Flat.NumberFlat.HasValue ? @Model.Flat.NumberFlat.Value.ToString() : string.Empty;
     }
     <span>@numberFlat</span>
-    <br />
+    <br/>
     @Model.Flat.Status
     <br/>
     @* Show photos *@
-    <div class="your-class">
-        <div>222</div>
-        <div>333</div>
-        <div>444</div>
-    </div>
+    <div class="wrapper">
+        <h1>Connected Carousels</h1>
 
-    <script type="text/javascript" language="javascript">
-        $(document).ready(function () {
-            $('.your-class').slick({
-                // setting-name: setting-value
-            });
-        });
-    </script>
+        <p>This example shows how to connect two carousels together so that one carousels acts as a navigation for the other.</p>
+
+        <div class="connected-carousels">
+            <div class="stage">
+                <div class="carousel carousel-stage">
+                    <ul>
+                        <li><img src="../_shared/img/img1.jpg" width="600" height="400" alt=""></li>
+                        @*<li><img src="../_shared/img/img2.jpg" width="600" height="400" alt=""></li>
+                        <li><img src="../_shared/img/img3.jpg" width="600" height="400" alt=""></li>
+                        <li><img src="../_shared/img/img4.jpg" width="600" height="400" alt=""></li>
+                        <li><img src="../_shared/img/img5.jpg" width="600" height="400" alt=""></li>
+                        <li><img src="../_shared/img/img6.jpg" width="600" height="400" alt=""></li>*@
+                    </ul>
+                </div>                
+                <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
+                <a href="#" class="next next-stage"><span>&rsaquo;</span></a>
+            </div>
+            <div class="navigation">
+                <a href="#" class="prev prev-navigation">&lsaquo;</a>
+                <a href="#" class="next next-navigation">&rsaquo;</a>
+                <div class="carousel carousel-navigation">
+                    <ul>
+                        <li><img src="../_shared/img/img1_thumb.jpg" width="50" height="50" alt=""></li>
+                        @*<li><img src="../_shared/img/img2_thumb.jpg" width="50" height="50" alt=""></li>
+                        <li><img src="../_shared/img/img3_thumb.jpg" width="50" height="50" alt=""></li>
+                        <li><img src="../_shared/img/img4_thumb.jpg" width="50" height="50" alt=""></li>
+                        <li><img src="../_shared/img/img5_thumb.jpg" width="50" height="50" alt=""></li>
+                        <li><img src="../_shared/img/img6_thumb.jpg" width="50" height="50" alt=""></li>*@
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jCarousel")  
 </div>
 
