@@ -197,7 +197,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Interfaces\DecreaseImage.cs" />
     <Compile Include="Interfaces\FlatModelFactory.cs" />
+    <Compile Include="Interfaces\IDecreaseImage.cs" />
     <Compile Include="Interfaces\IFlatModelFactory.cs" />
     <Compile Include="Models\FlatViewModel.cs" />
     <Compile Include="Models\FlatListViewModel.cs" />

@@ -4,46 +4,41 @@
     ViewBag.Title = "Flat " + @Model.Flat.Name;
 }
 @Styles.Render("~/Content/jCarousel")
-@Html.ActionLink("Home/FlatList", "Index", "Flat")
+@Html.ActionLink("The List of flat", "Index", "Flat")
 <br />
 <h2>@Model.Flat.Name</h2>
 
 <div class="mainCurrentFlatDiv">
     @Model.Flat.Address
-    <br/>
+    <br />
     @Model.Flat.Id
-    <br/>
+    <br />
     @Model.Flat.BuyDate
-    <br/>
+    <br />
     @Model.Flat.ComplexName
-    <br/>
+    <br />
     @Model.Flat.CreatedDate
-    <br/>
+    <br />
     @{
         string numberFlat = @Model.Flat.NumberFlat.HasValue ? @Model.Flat.NumberFlat.Value.ToString() : string.Empty;
     }
     <span>@numberFlat</span>
-    <br/>
+    <br />
     @Model.Flat.Status
-    <br/>
+    <br />
     @* Show photos *@
     <div class="wrapper">
-        <h1>Connected Carousels</h1>
-
-        <p>This example shows how to connect two carousels together so that one carousels acts as a navigation for the other.</p>
-
+        <h1>Images</h1>
         <div class="connected-carousels">
             <div class="stage">
                 <div class="carousel carousel-stage">
                     <ul>
-                        <li><img src="../_shared/img/img1.jpg" width="600" height="400" alt=""></li>
-                        @*<li><img src="../_shared/img/img2.jpg" width="600" height="400" alt=""></li>
-                        <li><img src="../_shared/img/img3.jpg" width="600" height="400" alt=""></li>
-                        <li><img src="../_shared/img/img4.jpg" width="600" height="400" alt=""></li>
-                        <li><img src="../_shared/img/img5.jpg" width="600" height="400" alt=""></li>
-                        <li><img src="../_shared/img/img6.jpg" width="600" height="400" alt=""></li>*@
+                        @foreach (string currentImage in Model.Images)
+                        {
+                            <li><img src=@currentImage width="500" height="500" alt=""></li>
+                        }
                     </ul>
-                </div>                
+                </div>
                 <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
                 <a href="#" class="next next-stage"><span>&rsaquo;</span></a>
             </div>
@@ -52,17 +47,15 @@
                 <a href="#" class="next next-navigation">&rsaquo;</a>
                 <div class="carousel carousel-navigation">
                     <ul>
-                        <li><img src="../_shared/img/img1_thumb.jpg" width="50" height="50" alt=""></li>
-                        @*<li><img src="../_shared/img/img2_thumb.jpg" width="50" height="50" alt=""></li>
-                        <li><img src="../_shared/img/img3_thumb.jpg" width="50" height="50" alt=""></li>
-                        <li><img src="../_shared/img/img4_thumb.jpg" width="50" height="50" alt=""></li>
-                        <li><img src="../_shared/img/img5_thumb.jpg" width="50" height="50" alt=""></li>
-                        <li><img src="../_shared/img/img6_thumb.jpg" width="50" height="50" alt=""></li>*@
+                        @foreach (string currentThumbImage in Model.ThumbImages)
+                        {
+                            <li><img src=@currentThumbImage width="70" height="70" alt=""></li>
+                        }
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    @Scripts.Render("~/bundles/jCarousel")  
+    @Scripts.Render("~/bundles/jCarousel")
 </div>
 

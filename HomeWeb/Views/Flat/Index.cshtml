@@ -12,11 +12,9 @@
                 @if (Model.Flats.Count > i)
                 {
                     var currentFlat = Model.Flats[i];
-                    var imgBase64 = Convert.ToBase64String(Model.Images.FirstOrDefault(p => p.FlatId == i + 1).ImageData);
-
                     <a href="@Url.Action("FlatDetail", "Flat", new {@id = @currentFlat.Id})">
                         <div class="photoDiv">
-                            <img src=@string.Format("data:image/jpg;base64,{0}", imgBase64) alt=@currentFlat.Name />
+                            <img src=@Model.ImagesData[i+1] alt=@currentFlat.Name />
                         </div>
                         <div class="nameDiv">
                             <span class="nameSpan">@currentFlat.Name</span>

@@ -9,9 +9,22 @@ namespace StoreImagesInSQLServer
 {
     public partial class frmImagesStore : Form
     {
+        public static event EventHandler relativeClose;
         public frmImagesStore()
         {
             InitializeComponent();
+            relativeClose += FrmImagesStore_relativeClose;
+        }
+
+        private void FrmImagesStore_relativeClose(object sender, EventArgs e)
+        {
+            var t = 4;
+        }
+
+        public static void OnCountdownCompleted(EventArgs e)
+        {
+            if (relativeClose != null)
+                relativeClose(null, e);
         }
 
         //Get table rows from sql server to be displayed in Datagrid.

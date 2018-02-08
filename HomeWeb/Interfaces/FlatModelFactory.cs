@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HomeDB;
 using HomeLibrary.Interfaces;
+using HomeWeb.Helpers;
 using HomeWeb.Models;
 
 namespace HomeWeb.Interfaces
@@ -18,7 +20,7 @@ namespace HomeWeb.Interfaces
             FlatListViewModel flatListViewModel = new FlatListViewModel
             {
                 Flats = flatUi.GetAllFlats(),
-                Images = flatUi.GetAllPreviewImages()
+                ImagesData = flatUi.GetAllPreviewImages().ToDictionary(k => k.FlatId, v => v.ImageData.ToImage())
             };
             return flatListViewModel;
         }
@@ -27,15 +29,16 @@ namespace HomeWeb.Interfaces
         {
             IDecreaseImage decreaseImage = new DecreaseImage();
 
-            List<Image> images = flatUi.GetAllImages().Where(p => p.FlatId == id).ToList();
-
+            //List<Image> imagesList = flatUi.GetAllImages().Where(p => p.FlatId == id).ToList();
+            var images =
+                flatUi.GetAllImages()
+                    .Where(i => i.FlatId == id && i.ImageStatus.Id == 2);                                
             FlatViewModel flatViewModel = new FlatViewModel
             {
                 Flat = flatUi.GetFlat(id),
-                Images = images,
-                ThumbImages = images
-            };
-            flatViewModel.ThumbImages.ForEach(t=>t.ImageData = decreaseImage.CreateThumbnail(t.ImageData, 3));
+                Images = images.Select(i=>i.ImageData.ToImage()).ToList(),
+                ThumbImages = images.Select(i => decreaseImage.CreateThumbnail(i.ImageData, 50).ToImage()).ToList()
+            };            
             return flatViewModel;
         }
     }

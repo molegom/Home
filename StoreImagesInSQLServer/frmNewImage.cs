@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace StoreImagesInSQLServer
     public partial class frmNewImage : Form
     {
         private IImageUi imgUi;
+        private Dictionary<int, string> imagesStatus { get; set; }
+        private List<Flat> flats { get; set; }
         public frmNewImage()
         {
             imgUi = new ImageUi();
-            InitializeComponent();
+            InitializeComponent();          
         }
 
         private void cmdSave_Click(object sender, EventArgs e)
@@ -26,9 +29,9 @@ namespace StoreImagesInSQLServer
                 Image image = new Image()
                 {
                     CreatedData = DateTime.Now,
-                    FlatId = 3,
+                    FlatId = flats.Where(f => f.Name == cmbFlat.SelectedValue.ToString()).Select(s => s.Id).FirstOrDefault(),
                     ImageData = imageData,
-                    ImageStatusId = 1
+                    ImageStatusId = imagesStatus.FirstOrDefault(x => x.Value == cmbImageStatus.SelectedValue.ToString()).Key
                 };
                 IImageUi imgUi = new ImageUi();
                 var images = imgUi.SaveImage(image);
@@ -78,13 +81,17 @@ namespace StoreImagesInSQLServer
 
         private void cmdCancel_Click(object sender, EventArgs e)
         {
+            frmImagesStore.OnCountdownCompleted(new EventArgs());
             //Close this form if user clicks cancel.
             this.Close();
         }
 
         private void frmNewImage_Load(object sender, EventArgs e)
         {
-            cmbImageStatus.DataSource = imgUi.GetAllImageStatuses().Values.ToList();
+            imagesStatus = imgUi.GetAllImageStatuses();
+            flats = imgUi.GetallFlats();
+            cmbImageStatus.DataSource = imagesStatus.Values.ToList();
+            cmbFlat.DataSource = flats.Select(f => f.Name).ToList();
         }
     }
 }

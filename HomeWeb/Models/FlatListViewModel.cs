@@ -5,7 +5,7 @@ namespace HomeWeb.Models
 {
     public class FlatListViewModel
     {
-        public List<Flat> Flats { get; set; }
-        public List<Image> Images { get; set; }
+        public List<Flat> Flats { get; set; }      
+        public Dictionary<int, string> ImagesData { get; set; } 
     }
 }

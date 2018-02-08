@@ -6,7 +6,7 @@ namespace StoreImagesInSQLServer.Interfaces
     {
         List<HomeDB.Image> GetAllImages();
         Dictionary<int, string> GetAllImageStatuses();
-
         int SaveImage(HomeDB.Image image);
+        List<HomeDB.Flat> GetallFlats();
     }
 }

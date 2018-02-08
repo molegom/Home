@@ -35,6 +35,9 @@ namespace StoreImagesInSQLServer
             this.cmdSave = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
             this.cmbImageStatus = new System.Windows.Forms.ComboBox();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.cmbFlat = new System.Windows.Forms.ComboBox();
+            this.lblFlat = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,11 +105,40 @@ namespace StoreImagesInSQLServer
             this.cmbImageStatus.Size = new System.Drawing.Size(121, 21);
             this.cmbImageStatus.TabIndex = 6;
             // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(534, 29);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(37, 13);
+            this.lblStatus.TabIndex = 7;
+            this.lblStatus.Text = "Status";
+            // 
+            // cmbFlat
+            // 
+            this.cmbFlat.FormattingEnabled = true;
+            this.cmbFlat.Location = new System.Drawing.Point(534, 156);
+            this.cmbFlat.Name = "cmbFlat";
+            this.cmbFlat.Size = new System.Drawing.Size(121, 21);
+            this.cmbFlat.TabIndex = 8;
+            // 
+            // lblFlat
+            // 
+            this.lblFlat.AutoSize = true;
+            this.lblFlat.Location = new System.Drawing.Point(534, 140);
+            this.lblFlat.Name = "lblFlat";
+            this.lblFlat.Size = new System.Drawing.Size(24, 13);
+            this.lblFlat.TabIndex = 9;
+            this.lblFlat.Text = "Flat";
+            // 
             // frmNewImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(699, 441);
+            this.Controls.Add(this.lblFlat);
+            this.Controls.Add(this.cmbFlat);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.cmbImageStatus);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdSave);
@@ -133,5 +165,8 @@ namespace StoreImagesInSQLServer
         private System.Windows.Forms.Button cmdSave;
         private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.ComboBox cmbImageStatus;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.ComboBox cmbFlat;
+        private System.Windows.Forms.Label lblFlat;
     }
 }
