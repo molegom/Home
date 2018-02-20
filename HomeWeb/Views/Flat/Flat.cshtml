@@ -4,31 +4,34 @@
     ViewBag.Title = "Flat " + @Model.Flat.Name;
 }
 @Styles.Render("~/Content/jCarousel")
-@Html.ActionLink("The List of flat", "Index", "Flat")
+<div class="mainBreadCrump">
+    @Html.ActionLink("The List of flat", "Index", "Flat")
+</div>
 <br />
-<h2>@Model.Flat.Name</h2>
+<div class="flatName">@Model.Flat.Name</div>
 
 <div class="mainCurrentFlatDiv">
-    @Model.Flat.Address
-    <br />
-    @Model.Flat.Id
-    <br />
-    @Model.Flat.BuyDate
-    <br />
-    @Model.Flat.ComplexName
-    <br />
-    @Model.Flat.CreatedDate
-    <br />
-    @{
-        string numberFlat = @Model.Flat.NumberFlat.HasValue ? @Model.Flat.NumberFlat.Value.ToString() : string.Empty;
-    }
-    <span>@numberFlat</span>
-    <br />
-    @Model.Flat.Status
-    <br />
+    <div class="currentFlatDescription">
+        @Model.Flat.Address
+        <br />
+        @Model.Flat.Id
+        <br />
+        @Model.Flat.BuyDate
+        <br />
+        @Model.Flat.ComplexName
+        <br />
+        @Model.Flat.CreatedDate
+        <br />
+        @{
+            string numberFlat = @Model.Flat.NumberFlat.HasValue ? @Model.Flat.NumberFlat.Value.ToString() : string.Empty;
+        }
+        <span>@numberFlat</span>
+        <br />
+        @Model.Flat.Status
+        <br />
+    </div>
     @* Show photos *@
-    <div class="wrapper">
-        <h1>Images</h1>
+    <div class="wrapper currentFlatImage">
         <div class="connected-carousels">
             <div class="stage">
                 <div class="carousel carousel-stage">

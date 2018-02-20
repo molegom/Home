@@ -28,6 +28,17 @@ textarea {
     max-width: 280px;
 }
 
+.mainBreadCrump {
+    margin: 5px 0 0 0;
+}
+
+.flatName {
+    text-align: center;
+    font-size: 20px;
+    border-bottom: 1px solid #d6d6d6;
+    border-top: 1px solid #d6d6d6;
+}
+
 .mainDiv {
     width: 1002px;
     margin-left: auto;
@@ -35,11 +46,27 @@ textarea {
     height: 4002px;
 }
 
+.mainCurrentFlatDiv {
+    position:relative;
+}
+
+.currentFlatDescription {
+    float: left;
+    min-width: 400px;
+}
+
+.currentFlatImage {
+    clear:both;
+    position:absolute;
+    top:0px;
+    right:0px;
+}
+
 .photoDiv, .nameDiv {
     margin-top: 10px;
     width: 100px;
     margin-left: auto;
-    margin-right: auto;   
+    margin-right: auto;
 }
 .nameDiv {
     padding-top: 0px;
