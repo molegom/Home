@@ -5,30 +5,47 @@
 }
 @Styles.Render("~/Content/jCarousel")
 <div class="mainBreadCrump">
-    @Html.ActionLink("The List of flat", "Index", "Flat")
+    @Html.ActionLink("Список квартир", "Index", "Flat")
 </div>
 <br />
 <div class="flatName">@Model.Flat.Name</div>
 
 <div class="mainCurrentFlatDiv">
     <div class="currentFlatDescription">
-        @Model.Flat.Address
-        <br />
-        @Model.Flat.Id
-        <br />
-        @Model.Flat.BuyDate
-        <br />
-        @Model.Flat.ComplexName
-        <br />
-        @Model.Flat.CreatedDate
-        <br />
-        @{
-            string numberFlat = @Model.Flat.NumberFlat.HasValue ? @Model.Flat.NumberFlat.Value.ToString() : string.Empty;
-        }
-        <span>@numberFlat</span>
-        <br />
-        @Model.Flat.Status
-        <br />
+        @Html.Label("Інформація про об'єкт:", new { @class="infoNameFlat"})
+        <table>
+            <tr>
+                <td>Адрес:</td>
+                <td>@Model.Flat.Address</td>
+            </tr>
+            <tr>
+                <td>Покупка N:</td>
+                <td>@Model.Flat.Id</td>
+            </tr>
+            <tr>
+                <td>Дата покупки:</td>
+                <td>@Model.Flat.BuyDate.Value.ToShortDateString()</td>
+            </tr>
+            <tr>
+                <td>Назва комплексу:</td>
+                <td>@Model.Flat.ComplexName</td>
+            </tr>
+            <tr>
+                <td>Дата запису:</td>
+                <td>@Model.Flat.CreatedDate.ToShortDateString()</td>
+            </tr>
+            <tr>
+                <td>Номер квартири:</td>
+                @{
+                    string numberFlat = @Model.Flat.NumberFlat.HasValue ? @Model.Flat.NumberFlat.Value.ToString() : string.Empty;
+                }
+                <td>@numberFlat</td>
+            </tr>
+            <tr>
+                <td>Статус покупки:</td>
+                <td>@Model.Flat.Status</td>
+            </tr>
+        </table>
     </div>
     @* Show photos *@
     <div class="wrapper currentFlatImage">
