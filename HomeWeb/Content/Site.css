@@ -55,9 +55,27 @@ table td{
     position:relative;
 }
 
+.infoNameFlat {
+    width: 100%;
+    text-align: center;
+}
+
 .currentFlatDescription {
+    margin-top: 20px;
+    border: 1px solid #d6d6d6;
     float: left;
     min-width: 400px;
+}
+
+.currentFlatDescription table {
+    width: 100%;
+}
+.currentFlatDescription table td{    
+    padding-right: 10px;
+}
+
+.currentFlatDescription table td:first-child{
+    text-align: right;
 }
 
 .currentFlatImage {
